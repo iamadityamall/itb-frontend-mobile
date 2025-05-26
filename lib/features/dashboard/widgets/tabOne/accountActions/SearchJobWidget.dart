@@ -37,7 +37,7 @@ class _SearchJobWidgetState extends State<SearchJobWidget> {
       }
 
       final response = await dio.get(
-        'http://172.16.16.104:9001/iTB/client/1/jobs',
+        'http://172.16.17.64:9001/iTB/client/1/jobs',
         queryParameters: queryParams.isNotEmpty ? queryParams : null,
       );
 
@@ -247,12 +247,12 @@ class _SearchJobWidgetState extends State<SearchJobWidget> {
                                           fontSize: 12,
                                         ),
                                       ),
-                                      Text(
-                                        "Total Records: ${data['totalRecords']}",
-                                        style: GoogleFonts.poppins(
-                                          fontSize: 12,
-                                        ),
-                                      ),
+                                      // Text(
+                                      //   "Total Records: ${data['totalRecords']}",
+                                      //   style: GoogleFonts.poppins(
+                                      //     fontSize: 12,
+                                      //   ),
+                                      // ),
                                       Text(
                                         "Processed Records: ${data['processedRecords']}",
                                         style: GoogleFonts.poppins(

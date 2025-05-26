@@ -13,7 +13,7 @@ class StatementDownloadWidget extends StatefulWidget {
 }
 
 class _StatementDownloadWidgetState extends State<StatementDownloadWidget> {
-  String? selectedFormat = "PDF";
+  String? selectedFormat = "CSV";
   String? selectedRangeOption;
   DateTimeRange? selectedRange;
 
@@ -68,7 +68,7 @@ class _StatementDownloadWidgetState extends State<StatementDownloadWidget> {
           // Format selector
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
-            children: ["PDF", "Excel"].map((type) {
+            children: ["CSV", "Excel"].map((type) {
               return Row(
                 children: [
                   Radio<String>(

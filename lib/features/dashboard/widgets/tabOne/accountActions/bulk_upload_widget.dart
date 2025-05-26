@@ -34,7 +34,7 @@ class _BulkUploadWidgetState extends State<BulkUploadWidget> {
     });
 
     try {
-      final response = await dio.get('http://172.16.16.104:9001/iTB/client/1/jobs');
+      final response = await dio.get('http://172.16.17.64:9001/iTB/client/1/jobs');
       if (response.statusCode == 200 && response.data is List) {
         setState(() {
           uploadedJobs = List<Map<String, dynamic>>.from(response.data).reversed.toList();
@@ -62,7 +62,7 @@ class _BulkUploadWidgetState extends State<BulkUploadWidget> {
   Future<void> _refreshJob(int index, int jobId) async {
     try {
 
-      final response = await dio.get('http://172.16.16.104:9001/iTB/status/$jobId');
+      final response = await dio.get('http://172.16.17.64:9001/iTB/status/$jobId');
       if (response.statusCode == 200 && response.data is Map<String, dynamic>) {
 
         setState(() {
@@ -109,7 +109,7 @@ class _BulkUploadWidgetState extends State<BulkUploadWidget> {
 
       // API call with progress callback
       final response = await dio.post(
-        'http://172.16.16.104:9001/iTB/file/clients/1/process',
+        'http://172.16.17.64:9001/iTB/file/clients/1/process',
         data: formData,
         onSendProgress: (sent, total) {
           setState(() {
@@ -287,8 +287,8 @@ class _BulkUploadWidgetState extends State<BulkUploadWidget> {
                                         style: GoogleFonts.poppins(fontSize: 12)),
                                     Text("Status: ${job['status']}",
                                         style: GoogleFonts.poppins(fontSize: 12)),
-                                    Text("Total Records: ${job['totalRecords']}",
-                                        style: GoogleFonts.poppins(fontSize: 12)),
+                                    // Text("Total Records: ${job['totalRecords']}",
+                                    //     style: GoogleFonts.poppins(fontSize: 12)),
                                     Text("Processed Records: ${job['processedRecords']}",
                                         style: GoogleFonts.poppins(fontSize: 12)),
                                     Text("Valid Records: ${job['validRecords']}",

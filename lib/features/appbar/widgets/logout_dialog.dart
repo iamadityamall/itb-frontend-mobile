@@ -5,8 +5,13 @@ import 'package:get/get.dart';
 import '../../../core/constants/app_strings.dart';
 import '../../../core/constants/app_text_styles.dart';
 import '../../../core/widgets/common_button.dart';
+import '../../auth/login/controller/logout_controller.dart';
 
 void showLogoutDialog() {
+  final logoutController = Get.put(
+    LogoutController(),
+  ); // Make sure this is provided
+
   Get.defaultDialog(
     titlePadding: EdgeInsets.zero,
     contentPadding: const EdgeInsets.symmetric(horizontal: 15, vertical: 10),
@@ -22,7 +27,6 @@ void showLogoutDialog() {
           fit: BoxFit.contain,
         ),
         AppSizes.sizedBoxHeight10,
-        // Divider
         AppSizes.dividerTwo,
         AppSizes.sizedBoxHeight10,
         // Logout Message
@@ -32,7 +36,6 @@ void showLogoutDialog() {
           style: AppTextStyles.bodyBlack,
         ),
         AppSizes.sizedBoxHeight10,
-        // Buttons
         Row(
           children: [
             Expanded(
@@ -47,9 +50,9 @@ void showLogoutDialog() {
               child: CommonButton(
                 text: AppStrings.logoutLogoutText,
                 isPrimary: true,
-                onPressed: () {
+                onPressed: () async {
                   Get.back(); // Close dialog
-                  Get.offAllNamed('/mpin-login'); // Navigate to login
+                  await logoutController.logout();
                 },
               ),
             ),
